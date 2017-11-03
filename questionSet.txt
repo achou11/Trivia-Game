@@ -2,7 +2,19 @@ How to spell the word "hello":
 hello
 What year was People's Republic of China established:
 1949 
-What is your name?
-Hayden
-How old are you?
-22
+What city is the capital of China: 
+beijing
+What kind of animal did Bill Clinton have in office?
+cat
+What popular beverage once contained cocaine?
+coke
+The US military installation Area 51 is located in which state?
+nevada
+What was the first capital city of the United States?
+philadelphia
+Who directed the 1977 movie Star Wars?
+george lucas
+Who was the female lead in the movie "Titanic"?
+kate winslet
+What 2013 science fiction blockbuster starred Sandra Bullock and George Clooney?
+gravity
