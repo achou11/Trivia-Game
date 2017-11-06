@@ -50,13 +50,13 @@ def main():
 
         # initialize score
         score = 0
-        print('\nWelcome to The Incoherent Trivia Game!\n\nInstructions: You\'ll be presented with a riddle and four answers to the riddle. Only one of the answers is correct.\nThe screen will clear after answering each question, but you can view past questions just by scrolling up.\nIf at any point you want to quit, just type \'quit\'\n')
+        print('\nWelcome to The Incoherent Trivia Game!\n\nYou\'ll be presented with a riddle and four answers to the riddle. Only one of the answers is correct.\nThe screen will clear when presenting the next question (there are 10 total), but you can view past questions just by scrolling up.\nIf at any point you want to quit, just type \'quit\'\n')
 
         # ask if user wants to play
         ask_to_play = input('Ready to play? (y/n) ==> ').lower()
         while ask_to_play not in ['y', 'n']:
             print('Please enter y or n\n')
-            ask_to_play = input('Ready to play? (y/n) ==>').lower()
+            ask_to_play = input('Ready to play? (y/n) ==> ').lower()
 
         if ask_to_play == 'n':
             print('Ok nevermind. Bye.\n')
@@ -65,14 +65,15 @@ def main():
         clear_screen(OS_NAME)
 
         # start game
-        for i in range(1, 6):
+        for i in range(1, 11):
 
             riddle_pair = choose_random_riddle_to_display(riddle_list)
             question = riddle_pair['question']
             actual_answer = riddle_pair['answer']
             answer_choices = choose_random_answers_to_display(riddle_list, riddle_pair)
 
-            print(f'\nCurrent score: {score}\n\n')
+            print(f'\nQuestions left: {11 - i}\n')
+            print(f'Current score: {score}\n\n')
             print(f'Question {i}:\n\t{question}\n')
             print('Here are the choices:\n')
 
@@ -106,7 +107,7 @@ def main():
             print('Quitting...')
             continue
         else:
-            print(f'Game finished. Your final score was {score}')
+            print(f'Game finished. Your final score was {score}\n')
             play_again = input('Play again? (y/n) ==> ').lower()
             while play_again not in ['y', 'n']:
                 play_again = input('Play again? (y/n) ==> ').lower()
