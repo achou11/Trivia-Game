@@ -10,6 +10,7 @@ def write_into_file(question, answer, file):
     a = answer.replace('\n', ' ')
     f.write(f'{q}&{a}\n')
 
+
 driver = webdriver.Chrome()
 url = 'https://www.riddles.com/archives'
 driver.get(url)
