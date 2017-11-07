@@ -107,7 +107,7 @@ def main():
             print('Quitting...')
             continue
         else:
-            print(f'Game finished. Your final score was {score}\n')
+            print(f'Congrats on making it to the end! Your final score was {score}\n')
             play_again = input('Play again? (y/n) ==> ').lower()
             while play_again not in ['y', 'n']:
                 play_again = input('Play again? (y/n) ==> ').lower()
