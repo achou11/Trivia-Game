@@ -74,13 +74,13 @@ def main():
 
             print(f'\nQuestions left: {11 - i}\n')
             print(f'Current score: {score}\n\n')
-            print(f'Question {i}:\n\t{question}\n')
+            print(f'Question {i}:\n\n{question}\n')
             print('Here are the choices:\n')
 
             number_answer_dict = {}
             for i, choice in enumerate(answer_choices, 1):
                 number_answer_dict[i] = choice
-                print(f'\t{i}: {choice}\n')
+                print(f'{i}: {choice}\n')
 
             user_guess = input('What\'s your guess? (1, 2, 3, or 4) ==> ')
 
