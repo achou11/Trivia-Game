@@ -119,4 +119,6 @@ def main():
             print('Ok thanks for playing!')
             break
 
-main()
+
+if __name__ == "__main__":
+    main()
