@@ -64,25 +64,37 @@ def main():
 
         clear_screen(OS_NAME)
 
+        number_of_questions = input('\nHow many questions do you want to be asked? (Enter any number between 1 and 500) ')
+
+        while not str.isnumeric(number_of_questions) or int(number_of_questions) not in range(1, 501):
+            print('\nPlease enter a number between 1 and 500')
+
+            number_of_questions = input('\nHow many questions do you want to be asked? (Enter any number between 1 and 500) ')
+
+        number_of_questions = int(number_of_questions)
+
         # start game
-        for i in range(1, 11):
+        for i in range(1, number_of_questions+1):
 
             riddle_pair = choose_random_riddle_to_display(riddle_list)
             question = riddle_pair['question']
             actual_answer = riddle_pair['answer']
             answer_choices = choose_random_answers_to_display(riddle_list, riddle_pair)
 
-            print(f'\nQuestions left: {11 - i}\n')
-            print(f'Current score: {score}\n\n')
-            print(f'Question {i}:\n\n{question}\n')
+            print('\nQuestions left: {}\n'.format(number_of_questions + 1 - i))
+            print('Current score: {}\n'.format(score))
+            print('**************************************')
+            print('You can quit anytime by typing \'quit\'')
+            print('**************************************\n\n')
+            print('Question {a}: {b}\n\n'.format(a=i, b=question))
             print('Here are the choices:\n')
 
             number_answer_dict = {}
             for i, choice in enumerate(answer_choices, 1):
                 number_answer_dict[i] = choice
-                print(f'{i}: {choice}\n')
+                print('{a}: {b}\n'.format(a=i, b=choice))
 
-            user_guess = input('What\'s your guess? (1, 2, 3, or 4) ==> ')
+            user_guess = input('\nWhat\'s your guess? (1, 2, 3, or 4) ==> ')
 
             if user_guess == 'quit':
                 play = False
@@ -94,12 +106,12 @@ def main():
                     user_guess = input('What\'s your guess? (1, 2, 3, or 4) ==> ')
 
                 if number_answer_dict[int(user_guess)] != actual_answer:
-                    print(f'\nWrong answer!\nThe correct answer is: {actual_answer}\n')
+                    print('\n\nWrong answer! The correct answer is: {}\n'.format(actual_answer))
                 else:
                     score += 1
                     print('\nNice job! +1 for your score\n')
 
-            input('\nPress any key to continue...')
+            input('\nPress the ENTER key to continue...')
 
             clear_screen(OS_NAME)
 
@@ -107,8 +119,9 @@ def main():
             print('Quitting...')
             continue
         else:
-            print(f'Congrats on making it to the end! Your final score was {score}\n')
-            play_again = input('Play again? (y/n) ==> ').lower()
+            print('\nCongrats on making it to the end! Your final score was {a} out of {b} ({c}%) \n'.format(a=score, b=number_of_questions, c= round(score/number_of_questions, 2)))
+
+            play_again = input('\nPlay again? (y/n) ==> ').lower()
             while play_again not in ['y', 'n']:
                 play_again = input('Play again? (y/n) ==> ').lower()
 
