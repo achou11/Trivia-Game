@@ -4,7 +4,7 @@ import game
 
 class FunctionsTest(unittest.TestCase):
 
-    # create_riddle_list
+    # tests for create_riddle_list function
     def test_riddle_list_not_empty(self):
         self.assertFalse(not game.create_riddle_list(), msg='riddle_list_create() returns empty list')
 
@@ -12,7 +12,7 @@ class FunctionsTest(unittest.TestCase):
         self.assertIs(type(game.create_riddle_list()), list, msg='riddle_list_create() does not return list object')
 
 
-    # choose_random_answers_to_display
+    # tests for choose_random_answers_to_display function
     def test_random_answers_list_is_list(self):
         riddle_list = game.create_riddle_list()
         riddle_displayed = {
@@ -30,9 +30,22 @@ class FunctionsTest(unittest.TestCase):
                 'question': 'What is the question?',
                 'answer': 'This is the answer.'
         }
-        self.assertEquals(len(game.choose_random_answers_to_display(riddle_list, riddle_displayed)), 4)
 
-    # choose_random_riddle_to_display
+        self.assertEquals(len(game.choose_random_answers_to_display(riddle_list, riddle_displayed)), 4, msg='choose_random_answers_to_display not returning list of length 4')
+
+    def test_actual_answer_in_random_answers_list(self):
+        riddle_list = game.create_riddle_list()
+        riddle_displayed = {
+                'id': 0,
+                'question': 'What is the question?',
+                'answer': 'This is the answer.'
+        } 
+        random_answers = game.choose_random_answers_to_display(riddle_list, riddle_displayed)
+
+        self.assertIn(riddle_displayed['answer'], random_answers, msg='Actual answer not in random answers to be displayed')
+
+
+    # tests for choose_random_riddle_to_display function
     def test_random_riddle_to_display(self):
         riddle_list = game.create_riddle_list()
 
@@ -40,5 +53,5 @@ class FunctionsTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(FunctionsTest)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    testSuite = unittest.TestLoader().loadTestsFromTestCase(FunctionsTest)
+    unittest.TextTestRunner(verbosity=2).run(testSuite)
