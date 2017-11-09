@@ -39,7 +39,7 @@ class FunctionsTest(unittest.TestCase):
                 'id': 0,
                 'question': 'What is the question?',
                 'answer': 'This is the answer.'
-        } 
+        }
         random_answers = game.choose_random_answers_to_display(riddle_list, riddle_displayed)
 
         self.assertIn(riddle_displayed['answer'], random_answers, msg='Actual answer not in random answers to be displayed')
@@ -50,6 +50,13 @@ class FunctionsTest(unittest.TestCase):
         riddle_list = game.create_riddle_list()
 
         self.assertIs(type(game.choose_random_riddle_to_display(riddle_list)), dict, msg='Random riddle chosen is not of type dict')
+
+    def test_random_riddle_displayed_has_required_keys(self):
+        riddle_list = game.create_riddle_list()
+        riddle_displayed = game.choose_random_riddle_to_display(riddle_list)
+        required_keys = ['id', 'question', 'answer']
+
+        self.assertEquals(required_keys, list(riddle_displayed.keys()), msg='Riddle selected to display does not contain all required keys')
 
 
 if __name__ == "__main__":
