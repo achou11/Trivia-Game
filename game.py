@@ -35,7 +35,7 @@ def choose_random_riddle_to_display(riddle_list):
 def clear_screen(os_name):
     if os_name == 'posix':
         os.system('clear')
-    else:
+    elif:
         os.system('cls')
 
 

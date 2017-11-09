@@ -1,3 +1,4 @@
+import os
 import unittest
 import game
 
@@ -57,6 +58,13 @@ class FunctionsTest(unittest.TestCase):
         required_keys = ['id', 'question', 'answer']
 
         self.assertEquals(required_keys, list(riddle_displayed.keys()), msg='Riddle selected to display does not contain all required keys')
+
+
+    # tests for clear_screen function
+    def test_get_os_name(self):
+        valid_os_names = ['posix', 'nt']
+
+        self.assertIn(os.name, valid_os_names, msg='Not running on Posix-compliant or Windows machine')
 
 
 if __name__ == "__main__":
