@@ -23,6 +23,14 @@ class FunctionsTest(unittest.TestCase):
 
         self.assertIs(type(game.choose_random_answers_to_display(riddle_list, riddle_displayed)), list, msg='choose_random_answers_to_display does not return a list')
 
+    def test_random_answer_length(self):
+        riddle_list = game.create_riddle_list()
+        riddle_displayed = {
+                'id': 0,
+                'question': 'What is the question?',
+                'answer': 'This is the answer.'
+        }
+        self.assertEquals(len(game.choose_random_answers_to_display(riddle_list, riddle_displayed)), 4)
 
     # choose_random_riddle_to_display
     def test_random_riddle_to_display(self):
