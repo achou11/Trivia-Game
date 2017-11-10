@@ -1,5 +1,16 @@
 import os
 import random
+import signal
+import sys
+
+
+# function to exit game without traceback message on KeyBoardError
+def signal_handler(signal, frame):
+    print('\n')
+    print('Quitting game...\n')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 
 # function to create list of riddles from riddles.txt
@@ -50,7 +61,7 @@ def main():
 
         # initialize score
         score = 0
-        print('\nWelcome to The Incoherent Trivia Game!\n\nYou\'ll be presented with a riddle and four answers to the riddle. Only one of the answers is correct.\nThe screen will clear when presenting the next question (there are 10 total), but you can view past questions just by scrolling up.\nIf at any point you want to quit, just type \'quit\'\n')
+        print('\nWelcome to The Incoherent Trivia Game!\n\n- You\'ll be presented with a riddle and four answers to the riddle. Only one of the answers is correct\n\n- The screen will clear when presenting the next question (there are 10 total), but you can view the previous question just by scrolling up.\n\n- If at any point you want to quit, just type \'quit\'\n')
 
         # ask if user wants to play
         ask_to_play = input('Ready to play? (y/n) ==> ').lower()
