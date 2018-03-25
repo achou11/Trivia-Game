@@ -141,7 +141,6 @@ def main():
         else:
             play = False
             print('Ok thanks for playing!')
-            break
 
 
 if __name__ == "__main__":
